@@ -1,8 +1,11 @@
-import { Module } from '@nestjs/common';
+import { Module, NestModule, MiddlewareConsumer } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { BabblesModule } from './babbles/babbles.module';
 import { UsersModule } from './users/users.module';
-import { JwtModule } from '@nestjs/jwt/dist';
+import { AuthMiddleware } from './common/auth.middleware';
+import { BabblesController } from './babbles/babbles.controller';
+import { JwtService } from '@nestjs/jwt';
+
 
 @Module({
   imports: [
@@ -12,5 +15,11 @@ import { JwtModule } from '@nestjs/jwt/dist';
     BabblesModule,
     UsersModule,
   ],
+  providers : [JwtService]
 })
-export class AppModule {}
+export class AppModule implements NestModule {
+  configure(consumer: MiddlewareConsumer) {
+      consumer.apply(AuthMiddleware).forRoutes(BabblesController);
+  }
+
+}

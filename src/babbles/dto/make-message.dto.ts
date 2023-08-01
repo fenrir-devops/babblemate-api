@@ -1,6 +1,6 @@
 import { IsNotEmpty } from "class-validator";
 
-export class CreateBabbleDto {
+export class MakeMessageDTO {
     @IsNotEmpty()
-    readonly personality : string;
+    readonly content : string;
 }
