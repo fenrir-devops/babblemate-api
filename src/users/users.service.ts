@@ -14,7 +14,7 @@ export class UsersService {
     return created;
   }
   async authenticate(singinDto: SignInDto): Promise<Boolean> {
-    console.log(singinDto);
+    // console.log(singinDto);
     const found = await this.userModel
       .findOne({ userId: singinDto.userId })
       .exec();
