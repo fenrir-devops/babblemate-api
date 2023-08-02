@@ -10,9 +10,14 @@ export class AuthMiddleware implements NestMiddleware {
 
   async use(req: Request & {user : string}, res: Response, next: NextFunction) {
     const token = req.headers.authorization;
+
     if (token) {
+      if(!token.startsWith("Bearer") || token.split(" ").length !==2 ) {
+        return res.status(401).json({ statusCode : 401, message: 'Invalid token' });
+      }
+      const extrat = token.split(" ")[1];
       try {
-        const decodedToken = await this.jwtService.verifyAsync(token, {
+        const decodedToken = await this.jwtService.verifyAsync(extrat, {
             secret: 'ah7T4hbC0sNlM99XnRWI11vlA9FdSPR9',
           });
         req.user = decodedToken.sub; // 검증된 토큰 정보를 req.user에 저장

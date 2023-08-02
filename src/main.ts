@@ -8,7 +8,7 @@ async function bootstrap() {
   app.useGlobalPipes(new ValidationPipe());
   app.enableCors();
 
-  const config = new DocumentBuilder().setTitle("babblemate-api").setDescription("API description for BABBLE MATE").build();
+  const config = new DocumentBuilder().setTitle("babblemate-api").setDescription("API description for BABBLE MATE").addBearerAuth().build();
 
   const document = SwaggerModule.createDocument(app, config);
 
