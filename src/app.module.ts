@@ -10,7 +10,7 @@ import { JwtService } from '@nestjs/jwt';
 @Module({
   imports: [
     MongooseModule.forRoot(
-      'mongodb+srv://gozjxhs:gozjxhs@cluster0.ccmfm.mongodb.net/babblemate?retryWrites=true&w=majority',
+      '',
     ),
     BabblesModule,
     UsersModule,

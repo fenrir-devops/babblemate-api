@@ -9,7 +9,7 @@ import {
 
 const configuration = new Configuration({
   organization: 'org-jPO32mgFLsFXUbX0VhM5CsXo',
-  apiKey: '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',
+  apiKey: '',
 });
 const openai = new OpenAIApi(configuration);
 
