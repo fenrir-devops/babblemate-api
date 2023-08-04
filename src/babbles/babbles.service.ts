@@ -27,7 +27,7 @@ export class BabblesService {
       messages: [
         {
           role: 'system',
-          content: `너는 ${createBabbleDto.personality} 역할이야. 답변은 말하듯 짧게 1~3 문장으로 해줘. 잘 부탁해.`,
+          content: `너는 ${createBabbleDto.personality} 역할이야. 답변은 말하듯 짧게 1~3 문장으로 해줘. 너무 길면 불편하거든. 잘 부탁해.`,
         },
       ],
     };
