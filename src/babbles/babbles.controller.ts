@@ -97,6 +97,7 @@ export class BabblesController {
     await this.babblesService.validateBabbles(id, user);
 
     const data = await this.babblesService.getHistoryById(id);
+    data.messages.shift();
     console.log(data);
     return res.status(200).json(data);
   }
